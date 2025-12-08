@@ -1,7 +1,69 @@
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useEffect, Component, type ReactNode } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, Sphere, OrbitControls } from "@react-three/drei";
+import { Float, MeshDistortMaterial, Sphere } from "@react-three/drei";
 import * as THREE from "three";
+
+class WebGLErrorBoundary extends Component<{ children: ReactNode; fallback: ReactNode }, { hasError: boolean }> {
+  constructor(props: { children: ReactNode; fallback: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error) {
+    console.warn("WebGL not supported in this environment:", error.message);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
+
+function isWebGLSupported(): boolean {
+  try {
+    const canvas = document.createElement("canvas");
+    const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+    return gl !== null;
+  } catch {
+    return false;
+  }
+}
+
+function FallbackBackground({ isHero = false }: { isHero?: boolean }) {
+  return (
+    <div 
+      className={`${isHero ? "absolute inset-0 -z-10" : "fixed inset-0 -z-20 opacity-40"}`}
+      style={{
+        background: isHero 
+          ? "radial-gradient(ellipse at center, rgba(255,0,255,0.15) 0%, rgba(0,0,0,0.95) 70%)"
+          : "radial-gradient(ellipse at center, rgba(0,255,255,0.1) 0%, transparent 70%)",
+      }}
+    >
+      {[...Array(20)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full animate-pulse"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            width: `${2 + Math.random() * 4}px`,
+            height: `${2 + Math.random() * 4}px`,
+            backgroundColor: ["#FF00FF", "#00FFFF", "#39FF14"][i % 3],
+            boxShadow: `0 0 ${10 + Math.random() * 10}px ${["#FF00FF", "#00FFFF", "#39FF14"][i % 3]}`,
+            animationDelay: `${Math.random() * 2}s`,
+            animationDuration: `${2 + Math.random() * 3}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
 
 function AnimatedSphere() {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -131,36 +193,61 @@ function FloatingGeometries() {
   );
 }
 
+function ThreeCanvas({ isHero = false }: { isHero?: boolean }) {
+  return (
+    <Canvas
+      camera={{ position: isHero ? [0, 0, 6] : [0, 0, 10], fov: isHero ? 75 : 60 }}
+      dpr={isHero ? [1, 2] : [1, 1.5]}
+      onCreated={({ gl }) => {
+        gl.setClearColor(0x000000, 0);
+      }}
+    >
+      <ambientLight intensity={isHero ? 0.5 : 0.3} />
+      <pointLight position={[10, 10, 10]} intensity={isHero ? 1 : 0.5} color="#FF00FF" />
+      {isHero && <pointLight position={[-10, -10, -10]} intensity={0.5} color="#00FFFF" />}
+      {isHero && <AnimatedSphere />}
+      <Particles count={isHero ? 300 : 200} />
+      <FloatingGeometries />
+    </Canvas>
+  );
+}
+
 export function HeroScene() {
+  const [webGLSupported, setWebGLSupported] = useState(true);
+
+  useEffect(() => {
+    setWebGLSupported(isWebGLSupported());
+  }, []);
+
+  if (!webGLSupported) {
+    return <FallbackBackground isHero />;
+  }
+
   return (
     <div className="absolute inset-0 -z-10">
-      <Canvas
-        camera={{ position: [0, 0, 6], fov: 75 }}
-        dpr={[1, 2]}
-      >
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} color="#FF00FF" />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#00FFFF" />
-        <AnimatedSphere />
-        <Particles count={300} />
-        <FloatingGeometries />
-      </Canvas>
+      <WebGLErrorBoundary fallback={<FallbackBackground isHero />}>
+        <ThreeCanvas isHero />
+      </WebGLErrorBoundary>
     </div>
   );
 }
 
 export function BackgroundScene() {
+  const [webGLSupported, setWebGLSupported] = useState(true);
+
+  useEffect(() => {
+    setWebGLSupported(isWebGLSupported());
+  }, []);
+
+  if (!webGLSupported) {
+    return <FallbackBackground />;
+  }
+
   return (
     <div className="fixed inset-0 -z-20 opacity-40">
-      <Canvas
-        camera={{ position: [0, 0, 10], fov: 60 }}
-        dpr={[1, 1.5]}
-      >
-        <ambientLight intensity={0.3} />
-        <pointLight position={[10, 10, 10]} intensity={0.5} color="#FF00FF" />
-        <Particles count={200} />
-        <FloatingGeometries />
-      </Canvas>
+      <WebGLErrorBoundary fallback={<FallbackBackground />}>
+        <ThreeCanvas />
+      </WebGLErrorBoundary>
     </div>
   );
 }
