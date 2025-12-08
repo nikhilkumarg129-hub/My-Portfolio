@@ -1,0 +1,205 @@
+Here is a clean, structured, high-quality prompt you can directly paste into Replit AI Agent to generate your full Next.js + TypeScript + Three.js + Barba.js + GSAP animated, Gen-Z dark rave themed portfolio.
+
+✅ Your Final Replit Prompt (Copy–Paste Ready)
+
+Prompt Start ↓
+
+You are an expert full-stack engineer and creative web designer.
+Build a fully functional, production-ready portfolio website using:
+
+Next.js (latest version)
+
+TypeScript
+
+Three.js (for 3D elements & interactions)
+
+GSAP (for smooth animations)
+
+Barba.js (for SPA-like page transitions)
+
+TailwindCSS (for styling, unless a better minimal solution is needed)
+
+Framer Motion (only if required for UI animations)
+
+Dark Gen-Z Rave Theme (neon colors, grain, glitch effects, rave typography)
+
+🔮 Website Requirements
+⚡ Overall Theme + Design
+
+Dark rave aesthetic
+
+Neon colors (cyberpunk + vaporwave mix)
+
+Soft gradients, noise/grain texture
+
+Micro-interactions everywhere
+
+Three.js background with subtle animations
+
+Smooth page transitions using Barba.js
+
+Cursor-follower effects & magnetic buttons
+
+Everything minimal but visually striking
+
+Fully responsive (mobile + tablet + desktop)
+
+📌 Pages & Content Structure
+1. Home Page
+
+Hero section with:
+
+Animated 3D object (cube/orb/shader) in Three.js
+
+My name: Nikhil Gupta
+
+Title: Frontend Developer | Creative Web Designer | Gen-Z Coder
+
+Call-to-action buttons (Projects / Contact)
+
+Neon rave animated typography
+
+Motion-animated intro text
+
+Rave-glitch hover effects
+
+2. About Page
+
+My photo (with a neon outline + holographic effect)
+
+Sections:
+
+Bio
+
+Skills (frontend, animations, UI/UX, etc.)
+
+Tech stack grid with hover animations
+
+Three.js floating blobs or particles in background
+
+3. Skills Page
+
+Proper categorized skills:
+
+Languages (TS, JS)
+
+Frameworks (Next.js, React)
+
+3D/Animation tools (Three.js, GSAP, Barba.js)
+
+Tools (Git, VS Code, etc.)
+
+Neon progress bars or animated skill rings
+
+4. Projects Page
+
+Grid or carousel of projects
+
+Each card:
+
+Preview image
+
+Tech stack
+
+Description
+
+Link to GitHub & Live Demo
+
+On click → animate into a project detail page
+
+5. Experience & Education
+
+Vertical animated timeline
+
+Hover interactions with neon glow
+
+Smooth scroll animations
+
+6. Contact Page
+
+Neon cyberpunk contact form
+
+Social links
+
+Animated background
+
+“Send Message” button with particle burst animation
+
+🧩 Special Features
+
+3D animated background globally
+
+Three.js model loader (GLTF/GLB) support
+
+Barba.js transitions:
+
+Fade + slide
+
+Glitch transition option
+
+Custom cursor with trailing particles
+
+Preloader animation with rave effect
+
+Theme uses:
+
+Black (#000)
+
+Neon Pink (#FF00FF)
+
+Toxic Green (#39FF14)
+
+Electric Blue (#00FFFF)
+
+📁 Folder Structure Requirements
+
+Use a clean, scalable architecture:
+
+src/
+ ├─ app/
+ │   ├─ (pages)/...
+ │   ├─ layout.tsx
+ │   ├─ page.tsx
+ │   └─ transitions/
+ ├─ components/
+ ├─ hooks/
+ ├─ lib/
+ ├─ styles/
+ ├─ three/
+ └─ utils/
+
+⚙️ Technical Requirements
+
+No unused code or unnecessary libraries
+
+SEO optimized
+
+Accessible components
+
+Type-safe code everywhere
+
+Reusable animations (GSAP timelines)
+
+Clean file structure
+
+Integrate Barba.js properly with Next.js routing
+
+Provide instructions when needed
+
+Use comments to explain key logic
+
+🛠️ At the end, also generate:
+
+Installation steps
+
+Run commands
+
+Deployment guide (Vercel)
+
+Notes on customizing the Three.js scenes
+
+Notes on modifying Barba.js transitions
+
+Optional suggestions for improving the design
+
+Prompt End ↑
