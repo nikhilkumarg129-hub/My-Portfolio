@@ -111,8 +111,8 @@ export default function About() {
                   style={{ mixBlendMode: "overlay" }}
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
-                  alt="Nikhil Gupta"
+                  src="/profile.jpg"
+                  alt="I'M NIKHIL KUMAR GUPTA"
                   className="w-full h-full object-cover"
                   data-testid="img-profile"
                 />

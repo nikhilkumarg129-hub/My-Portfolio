@@ -89,7 +89,7 @@ app.use((req, res, next) => {
     {
       port,
       host: "0.0.0.0",
-      reusePort: true,
+      // reusePort is not supported on some Windows setups; omit to avoid ENOTSUP
     },
     () => {
       log(`serving on port ${port}`);

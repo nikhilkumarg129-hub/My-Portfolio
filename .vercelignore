@@ -1,0 +1,9 @@
+node_modules
+.local
+.replit
+*.bat
+*.ps1
+my pic
+attached_assets
+.git
+.gitignore

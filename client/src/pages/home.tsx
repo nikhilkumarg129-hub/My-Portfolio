@@ -42,7 +42,7 @@ export default function Home() {
     }
   }, []);
 
-  const titleLetters = "NIKHIL GUPTA".split("");
+  const titleLetters = "I'M NIKHIL KUMAR GUPTA".split("");
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">

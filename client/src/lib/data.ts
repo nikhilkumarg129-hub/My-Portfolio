@@ -177,7 +177,7 @@ export const socialLinks: SocialLink[] = [
   { name: "Dribbble", url: "https://dribbble.com/nikhilgupta", icon: "dribbble" },
 ];
 
-export const aboutBio = `Hey there! I'm Nikhil, a passionate frontend developer and creative coder who lives at the intersection of design and technology. With over 4 years of experience crafting digital experiences, I specialize in building immersive, animated web applications that push the boundaries of what's possible in the browser.
+export const aboutBio = `Hey there! I'M NIKHIL KUMAR GUPTA, a passionate frontend developer and creative coder who lives at the intersection of design and technology. With over 4 years of experience crafting digital experiences, I specialize in building immersive, animated web applications that push the boundaries of what's possible in the browser.
 
 My journey into web development started with a fascination for how websites could create emotional connections with users. Today, I channel that passion into creating experiences that are not just functional, but memorable. Whether it's a subtle micro-interaction or a full 3D scene, I believe every detail matters.
 
